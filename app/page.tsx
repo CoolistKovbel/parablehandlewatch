@@ -5,14 +5,17 @@ import MainUserSection from "./components/layout/main-user-section";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-10">
+    <main className="flex min-h-screen flex-col items-center gap-10 p-10">
       <MainHeader />
 
       <MainSection />
 
-      <MainUserSection />
 
-      <MainFooter />
+      {/* TODO FINBISH */}
+
+      {/* <MainUserSection />
+
+      <MainFooter /> */}
     </main>
   );
 }
