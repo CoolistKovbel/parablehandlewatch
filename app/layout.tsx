@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 
-import "./globals.css";
 import { inter } from "./components/ui/fonts";
+import { ModalProvider } from "./providers/model-provider";
+import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "ParoibleHandleWatch",
@@ -15,7 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <ModalProvider />
+        <ToastContainer />
+      </body>
     </html>
   );
 }

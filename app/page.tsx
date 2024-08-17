@@ -1,55 +1,18 @@
-import Image from "next/image";
-import Link from "next/link";
+import MainFooter from "./components/layout/main-footer";
+import MainHeader from "./components/layout/main-header";
+import MainSection from "./components/layout/main-trade-section";
+import MainUserSection from "./components/layout/main-user-section";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <header>
-        <h1>ParaboleHandleWatch</h1>
+    <main className="flex min-h-screen flex-col items-center justify-between p-10">
+      <MainHeader />
 
-        <div>
-          <button>Login</button>
-          <button>Register</button>
-        </div>
-      </header>
+      <MainSection />
 
-      <section>
-        <header>
-          <h2>Trade Here Today: </h2>
-          <p>Get yourself a trade and view tranasaction</p>
-        </header>
+      <MainUserSection />
 
-        <div>
-          <form>
-            <label htmlFor="">
-              <select name="tokenA" id="TokenA">
-                <option value="xxx">xxx</option>
-                <option value="eth">eth</option>
-                <option value="usd">usd</option>
-                <option value="wtbtc">wbtc</option>
-              </select>
-            </label>
-
-            <hr />
-
-            <label htmlFor="">
-              <select name="tokenA" id="TokenA">
-                <option value="xxx">xxx</option>
-                <option value="eth">eth</option>
-                <option value="usd">usd</option>
-                <option value="wtbtc">wbtc</option>
-              </select>
-            </label>
-
-            <div>
-              <h2>Calculation:</h2>
-              <p>Total: 100</p>
-              <p>amount: 10</p>
-              <button>submit</button>
-            </div>
-          </form>
-        </div>
-      </section>
+      <MainFooter />
     </main>
   );
 }
