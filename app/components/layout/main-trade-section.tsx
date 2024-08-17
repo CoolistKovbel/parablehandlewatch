@@ -24,6 +24,7 @@ const currentState: CurrentStateType = {
 };
 
 const MainSection = () => {
+
   const [currentCalc, setCurrentCalc] =
     useState<CurrentStateType>(currentState);
 
@@ -97,11 +98,13 @@ const MainSection = () => {
         </p>
       </header>
 
-      <div className="w-full">
+      <div className="w-full p-4">
+
         <form
           onSubmit={handleTrade}
-          className="flex items-center justify-between gap-4"
+          className="flex items-center justify-around gap-4"
         >
+          
           <div className="w-[50%]">
             <div className="flex gap-4 p-4">
               <label htmlFor="tokenAmountA">
@@ -158,7 +161,7 @@ const MainSection = () => {
             </div>
           </div>
 
-          <div className="w-[30%]">
+          <div className="w-[20%]">
             <h2>Calculation:</h2>
             <p>Total: {totalRef.current}</p>
             <p>amount: {totalTokenRef.current}</p>

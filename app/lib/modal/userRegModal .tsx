@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import { useModal } from "@/app/hooks/use-modal-store";
+import { handleRegister } from "../action";
 
 const UserRegModel = () => {
   const { isOpen, onClose, type, signature } = useModal();
@@ -22,20 +23,20 @@ const UserRegModel = () => {
       const signer = provider.getSigner();
 
       const form = e.target as HTMLFormElement;
+      const formData = new FormData(e.currentTarget)
 
       // Accessing form elements using the `elements` property
 
       const message = `You are the current account holder signing today`;
       const signature = await signer.signMessage(message);
+      formData.append("signature", signature)
+      //  action
+      const res = await handleRegister(formData)
 
-      const payload = {
-        signature,
-        username: fm,
-      };
-
-      console.log(payload);
+      console.log(res, "the data form the server")
 
       router.refresh();
+      form.reset()
 
       onClose();
     } catch (error) {
@@ -71,10 +72,12 @@ const UserRegModel = () => {
         open={isModalOpen}
         className="relative bg-white p-6 rounded-lg shadow-lg w-full max-w-md"
       >
+
         <form onSubmit={onSubmit}>
           <h2 className="text-2xl font-bold mb-4">Sign in</h2>
 
           <label className="block mb-2" htmlFor="name">
+            <span>Username:</span>
             <input
               type="text"
               name="name"
@@ -85,6 +88,7 @@ const UserRegModel = () => {
           </label>
 
           <label className="block mb-2" htmlFor="userEmail">
+            <span>Email:</span>
             <input
               type="email"
               name="userEmail"
@@ -95,6 +99,7 @@ const UserRegModel = () => {
           </label>
 
           <label className="block mb-2" htmlFor="userPassword">
+          <span>Password:</span>
             <input
               type="password"
               name="userPassword"
@@ -105,6 +110,7 @@ const UserRegModel = () => {
           </label>
 
           <label className="block mb-2" htmlFor="metaAddress">
+            <span>MetaAddress:</span>
             <input
               type="text"
               name="metaAddress"
@@ -133,6 +139,7 @@ const UserRegModel = () => {
           </div>
           
         </form>
+
       </dialog>
     </div>
   );
